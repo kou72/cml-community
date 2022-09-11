@@ -33,7 +33,9 @@ sim:
     nic_driver: virtio
     data_volume: 20
 boot:
-  timeout: 600
+  timeout: 180
+  completed:
+    - 'login:'
 inherited:
   image:
     ram: true
