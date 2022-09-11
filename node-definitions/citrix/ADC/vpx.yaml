@@ -3,6 +3,19 @@ general:
   description: Citrix ADC VPX
   nature: server
   read_only: false
+device:
+  interfaces:
+    has_loopback_zero: true
+    physical:
+      - 0/1
+      - 1/1
+      - 1/2
+      - 1/3
+      - 1/4
+    serial_ports: 1
+    default_count: 1
+    loopback:
+      - LO/1
 ui:
   visible: true
   description: Citrix ADC VPX
@@ -16,31 +29,25 @@ sim:
     disk_driver: virtio
     ram: 4096
     cpus: 2
+    cpu_limit: 100
     nic_driver: virtio
     data_volume: 20
-device:
-  interfaces:
-    serial_ports: 1
-    has_loopback_zero: true
-    loopback:
-      - LO/1
-    default_count: 1
-    physical:
-      - 0/1
-      - 1/1
-      - 1/2
-      - 1/3
-      - 1/4
 boot:
   timeout: 600
 inherited:
   image:
     ram: true
     cpus: true
+    cpu_limit: false
     data_volume: true
     boot_disk_size: false
   node:
     ram: true
     cpus: true
+    cpu_limit: false
     data_volume: true
     boot_disk_size: false
+configuration:
+  generator:
+    driver: null
+schema_version: 0.0.1
