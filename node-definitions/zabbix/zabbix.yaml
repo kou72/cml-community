@@ -1,0 +1,63 @@
+id: zabbix
+sim:
+  linux_native:
+    driver: server
+    libvirt_domain_driver: kvm
+    disk_driver: virtio
+    nic_driver: virtio
+    ram: 2048
+    cpus: 2
+    data_volume: 8
+    boot_disk_size: 64
+    cpu_limit: 100
+inherited:
+  image:
+    ram: true
+    cpus: true
+    cpu_limit: true
+    data_volume: true
+    boot_disk_size: true
+  node:
+    ram: true
+    cpus: true
+    cpu_limit: true
+    data_volume: true
+    boot_disk_size: true
+general:
+  nature: server
+  description: Zabbix Appliance
+  read_only: false
+schema_version: 0.0.1
+configuration:
+  generator:
+    driver: null
+device:
+  interfaces:
+    physical:
+      - eth0
+      - eth1
+      - eth2
+      - eth3
+      - eth4
+      - eth5
+      - eth6
+      - eth7
+    has_loopback_zero: false
+    default_count: 1
+    serial_ports: 1
+boot:
+  timeout: 60
+  completed:
+    - 'appliance login:'
+pyats:
+  os: linux
+  use_in_testbed: true
+ui:
+  group: Others
+  icon: server
+  label: Zabbix
+  label_prefix: zabbix-
+  visible: true
+  description: |-
+    # Zabbix Manual
+    https://www.zabbix.com/documentation/6.2/en/manual/appliance
